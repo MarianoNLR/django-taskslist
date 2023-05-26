@@ -3,19 +3,73 @@
 {% load static %}
 
 {% block content %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
 <link rel="stylesheet" href="{% static  'css/projects.css'%}">
 <div class="container">
     <h1>Projects</h1>
-    <a href="{% url 'create_project' %}"><button class="btn-new_task btn btn-primary" onclick="">Crear</button></a>
+    <div class="btn-container">
+        <a href="{% url 'create_project' %}"><button class="btn-new_task btn btn-primary" onclick="">Crear</button></a>
+    </div>
     <div class="projects-container">
         {% for project in projects %}
-        <a href="{% url 'project_view' project.id %}">
+        
             <div class="project">
-                <h3>{{project.title}}</h3>
-                <p>{{project.description}}</p>
+                <input type="hidden" id="4" style="display: none;">
+                <a href="{% url 'project_view' project.id %}">
+                    <div class="project-info">
+                    <h3>{{project.title}}</h3>
+                    <p>{{project.description}}</p>
+                    </div>
+                </a>
+                <div class="project-btn">
+                    <form  method="POST">
+                        {% csrf_token %}
+                     <button class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                        <path d="M16 5l3 3"></path>
+                     </svg></button>
+                    </form>
+                    <form method="POST" action="{% url 'delete_project' project.id %}">
+                        {% csrf_token %}
+                        <button class="btn btn-danger" id="btn-delete"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M4 7l16 0"></path>
+                            <path d="M10 11l0 6"></path>
+                            <path d="M14 11l0 6"></path>
+                            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                        </svg></button>
+                    </form>
+                </div>   
             </div>
-        </a>
+        
         {% endfor %}
     </div>
 </div>
+
+{% block js %}
+
+<script> 
+    function deleteProject(id) {
+        Swal.fire({
+            "title": "¿Estas seguro?",
+            "text": "No podrá deshacer esta acción",
+            "icon": "question",
+            "showCancelButton":true,
+            "cancelButtonText": "No, Cancelar",
+            "confirmButtonText": "Si, Eliminar",
+        })
+        .then(function(result){
+            if(result.isConfirmed) {
+                window.location.href = "delete_project/" + id + "/"
+            }
+        })
+    }
+</script>
+{% endblock %}
+
 {% endblock %}

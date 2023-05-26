@@ -54,7 +54,7 @@ def tasks(request):
 @login_required
 def projects(request):
     projects = Project.objects.filter(user=request.user)
-    
+    #list_task = Task.objects.filter(id=pro)
     return render(request, 'projects.html', {
         'projects': projects
     })
@@ -62,6 +62,8 @@ def projects(request):
 def project_view(request, project_id):
     project = Project.objects.filter(id=project_id).first()
     print(project)
+    if project is None:
+        return redirect('projects')
     if project.user_id != request.user.id:
         return redirect('projects')
     else:
@@ -70,6 +72,7 @@ def project_view(request, project_id):
             'project': project,
             'tasks': tasks
         })
+    
 
 @login_required
 def create_task(request, project_id):
@@ -89,7 +92,7 @@ def create_task(request, project_id):
         new_task = form.save(commit=False)
         new_task.project_id = project_id
         new_task.save()
-        return redirect('tasks')
+        return redirect('project_view', project_id=project_id)
     
 @login_required
 def create_project(request):
@@ -103,3 +106,12 @@ def create_project(request):
         new_project.user = request.user
         new_project.save()
         return redirect('projects')
+
+@login_required
+def delete_project(request, project_id):
+    if request.method == 'POST':
+        instance = Project.objects.get(id=project_id)
+        if request.user.id == instance.user_id:
+            instance.delete() 
+        return redirect('projects')
+    return redirect('projects')

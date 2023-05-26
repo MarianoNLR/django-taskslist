@@ -2,6 +2,12 @@ body{
     background-color: aliceblue;
 }
 
+h3 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 .container {
     margin: 0 auto;
     justify-content: center;
@@ -11,21 +17,39 @@ body{
     flex-wrap: nowrap;
 }
 
+.btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-bottom: 5px;
+}
+
 a {
     text-decoration: none;
     color: black !important;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-right: 5px;
 }
 a:hover {
     color: black !important;
     text-decoration: none;
 }
 
+.projects-container a {
+    width: 100%;
+}
+
 .projects-container {
-    width: 600px;
+    width: 100%;
     border-radius: 10px;
 }
 
 .project {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
     border-radius: 3px;
     box-shadow: 3px -2px 5px 0px rgba(0,0,0,0.59);
 -webkit-box-shadow: 3px -2px 5px 0px rgba(0,0,0,0.59);
@@ -33,7 +57,12 @@ a:hover {
 padding: 3px;
 }
 
-.project:hover{
-    background-color: rgba(32, 36, 36, 0.197);
-    transition: .5s;
+.project-btn{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.project-btn button{
+    margin-bottom: 2px;
 }

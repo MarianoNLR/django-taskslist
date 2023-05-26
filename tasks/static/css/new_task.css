@@ -1,0 +1,38 @@
+body{
+    background-color: aliceblue;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    width: 80%;
+}
+
+input {
+    width: 100%;
+    border-style: none;
+    border-color: none;
+}
+
+textarea {
+    width: 100%;
+    border-color: none;
+    border-style: none;
+    outline: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+.form-group {
+    justify-content: center;
+    display: flex;
+}
