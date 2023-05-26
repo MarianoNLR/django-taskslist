@@ -1,0 +1,39 @@
+body{
+    background-color: aliceblue;
+}
+
+.container {
+    margin: 0 auto;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+a {
+    text-decoration: none;
+    color: black !important;
+}
+a:hover {
+    color: black !important;
+    text-decoration: none;
+}
+
+.projects-container {
+    width: 600px;
+    border-radius: 10px;
+}
+
+.project {
+    border-radius: 3px;
+    box-shadow: 3px -2px 5px 0px rgba(0,0,0,0.59);
+-webkit-box-shadow: 3px -2px 5px 0px rgba(0,0,0,0.59);
+-moz-box-shadow: 3px -2px 5px 0px rgba(0,0,0,0.59);
+padding: 3px;
+}
+
+.project:hover{
+    background-color: rgba(32, 36, 36, 0.197);
+    transition: .5s;
+}

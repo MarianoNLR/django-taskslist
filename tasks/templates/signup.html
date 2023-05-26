@@ -1,11 +1,27 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
-<h1>Signup</h1>
-<form method="post">
-    {% csrf_token %}
-    {{form}}
-    <button type="submit">Signup</button>
-</form>
+<link rel="stylesheet" href="{% static 'css/signin.css' %}">
+<div class="form-container">
+    <form method="post" class="form">
+        {% csrf_token %}
+        <h1 class="form-title">Sign up</h1>
+            {% csrf_token %}
+            <div class="form-group">
+                {{form.username}}
+            </div>
+            <div class="form-group">
+                {{form.password1}}
+            </div>
+            <div class="form-group">
+                {{form.password2}}
+            </div>
+            <div class="form-group">
+                <button type="submit">Signin</button>
+            </div>
+    </form>
+</div>
 
 {% endblock %}

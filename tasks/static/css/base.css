@@ -5,6 +5,7 @@ body {
 
 header {
     display: flex;
+    flex-wrap: wrap;
     height: 70px;
     background-color: rgb(57, 119, 252);
     justify-content: space-between;
@@ -14,8 +15,13 @@ header {
 }
 
 header nav a {
-    text-decoration: none;
+    text-decoration: none !important;
     color: black;
     font-size: large;
     padding: 20px;
+}
+
+header nav a:hover{
+    color: aliceblue;
+    transition: .4s;
 }
