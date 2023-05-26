@@ -109,9 +109,15 @@ def create_project(request):
 
 @login_required
 def delete_project(request, project_id):
-    if request.method == 'POST':
-        instance = Project.objects.get(id=project_id)
-        if request.user.id == instance.user_id:
-            instance.delete() 
-        return redirect('projects')
+    instance = Project.objects.get(id=project_id)
+    if request.user.id == instance.user_id:
+        instance.delete() 
     return redirect('projects')
+
+@login_required
+def delete_task(request, task_id):
+    instance = Task.objects.get(id=task_id)
+    if instance is not None:
+        instance.delete()
+        return redirect('project_view', project_id=instance.project_id)
+    

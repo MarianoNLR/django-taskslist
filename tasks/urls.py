@@ -11,5 +11,6 @@ urlpatterns = [
     path('signout/', views.signout, name="signout"),
     path('create_task/id_project=<int:project_id>/', views.create_task, name="create_task"),
     path('create_project/', views.create_project, name="create_project"),
-    path('projects/delete_project/<int:project_id>/', views.delete_project, name="delete_project")
+    path('projects/delete_project/<int:project_id>/', views.delete_project, name="delete_project"),
+    path('delete_task/<int:task_id>/', views.delete_task, name="delete_task")
 ]
