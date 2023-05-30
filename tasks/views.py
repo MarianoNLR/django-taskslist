@@ -120,4 +120,31 @@ def delete_task(request, task_id):
     if instance is not None:
         instance.delete()
         return redirect('project_view', project_id=instance.project_id)
-    
+
+def update_project(request, project_id):
+    if request.method == 'GET':
+        project = Project.objects.get(id=project_id)
+        form = CreateProjectForm(instance = project)
+        return render(request, 'update_project.html', {
+            'project': project,
+            'form': form
+        })
+    else:
+        project = Project.objects.get(id=project_id)
+        form = CreateProjectForm(request.POST, instance=project)
+        form.save()
+        return redirect('projects')
+
+def update_task(request, task_id):
+    if request.method == 'GET':
+        task = Task.objects.get(id=task_id)
+        form = CreateTaskForm(instance = task)
+        return render(request, 'update_task.html', {
+            'task': task,
+            'form': form
+        })
+    else:
+        task = Task.objects.get(id=task_id)
+        form = CreateTaskForm(request.POST, instance=task)
+        form.save()
+        return redirect('project_view', task.project_id)
