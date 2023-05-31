@@ -51,6 +51,19 @@ a:hover {
     padding: 3px;
 }
 
+.task-completed {
+    background-color: #00a5008a;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 3px;
+    box-shadow: 3px -2px 5px 0px rgba(0,0,0,0.59);
+    -webkit-box-shadow: 3px -2px 5px 0px rgba(0,0,0,0.59);
+    -moz-box-shadow: 3px -2px 5px 0px rgba(0,0,0,0.59);
+    padding: 3px;
+}
+
 .task-btn{
     display: flex;
     flex-direction: column;

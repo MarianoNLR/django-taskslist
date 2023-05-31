@@ -16,6 +16,7 @@ class Task(models.Model):
     description = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    done = models.BooleanField(default=False, blank=True)
     def __str__(self):
         return self.title + ' - ' + self.project.title
 

@@ -4,9 +4,10 @@ from .models import Task, Project
 class CreateTaskForm(forms.ModelForm):
     title = forms.CharField(label='', widget=forms.TextInput(attrs={"placeholder": "Titulo"}))
     description = forms.CharField(label='', widget=forms.Textarea(attrs={"placeholder": "Ingrese la descripcion", "rows": "5"}))
+    done = forms.BooleanField(label='Done', required=False)
     class Meta:
         model = Task
-        fields = ['title', 'description']
+        fields = ['title', 'description', 'done']
         
 class CreateProjectForm(forms.ModelForm):
     title = forms.CharField(label='', widget=forms.TextInput(attrs={"placeholder": "Titulo"}))
