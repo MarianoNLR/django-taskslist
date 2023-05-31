@@ -19,7 +19,11 @@
     
     <div class="tasks-container">
         {% for task in tasks %}
+        {% if task.done == True %}
+        <div class="task-completed">
+        {% else %}
         <div class="task">
+        {% endif %}
             <div class="project-info">
                 <h3>{{task.title}}</h3>
                 <p>{{task.description}}</p>

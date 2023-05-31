@@ -66,3 +66,12 @@ padding: 3px;
 .project-btn button{
     margin-bottom: 2px;
 }
+
+.project-count{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-left: 2px double #000000;
+}

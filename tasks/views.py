@@ -54,9 +54,17 @@ def tasks(request):
 @login_required
 def projects(request):
     projects = Project.objects.filter(user=request.user)
-    #list_task = Task.objects.filter(id=pro)
+    list_task = []
+    for project in projects:
+        task = Task.objects.filter(project_id=project.id)
+        task_count = task.filter(done=True).count()
+        project.count = f'{task_count}/{task.filter().count()}'
+    print(list_task)
+    
+        
     return render(request, 'projects.html', {
-        'projects': projects
+        'projects': projects,
+        'list_task': list_task
     })
     
 def project_view(request, project_id):
@@ -144,6 +152,7 @@ def update_task(request, task_id):
             'form': form
         })
     else:
+        
         task = Task.objects.get(id=task_id)
         form = CreateTaskForm(request.POST, instance=task)
         form.save()
