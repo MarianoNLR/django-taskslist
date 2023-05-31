@@ -9,9 +9,13 @@
 <link rel="stylesheet" href="{% static  'css/projects.css'%}">
 <div class="container">
     <h1>Projects</h1>
+    {% if projects %}
     <div class="btn-container">
-        <a href="{% url 'create_project' %}"><button class="btn-new_task btn btn-primary" onclick="">Crear</button></a>
+        <a href="{% url 'create_project' %}"><button class="btn-new_task btn btn-primary" onclick="">New</button></a>
     </div>
+    {% else %}
+    <a href="{% url 'create_project' %}"><button class="btn-new_task btn btn-primary" onclick="">New</button></a>
+    {% endif %}
     <div class="projects-container">
         {% for project in projects %}
         

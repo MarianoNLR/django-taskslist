@@ -11,10 +11,10 @@
     <h1>Tasks</h1>
     {% if tasks %}
     <div class="btn-container">
-        <a href="{% url 'create_task' project.id %}"><button class="btn-new_task btn btn-primary" onclick="">Crear</button></a>
+        <a href="{% url 'create_task' project.id %}"><button class="btn-new_task btn btn-primary" onclick="">New</button></a>
     </div>
     {% else %}
-    <a href="{% url 'create_task' project.id %}"><button class="btn-new_task btn btn-primary" onclick="">Crear</button></a>
+    <a href="{% url 'create_task' project.id %}"><button class="btn-new_task btn btn-primary" onclick="">New</button></a>
     {% endif %}
     
     <div class="tasks-container">
