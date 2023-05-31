@@ -20,7 +20,7 @@ def signup(request):
             user = User.objects.create_user(username=request.POST['username'],
             password=request.POST['password1'])
             user.save()
-            return HttpResponse('Usuario creado con exito')
+            return redirect('signin')
 
 def signout(request):
     logout(request)
