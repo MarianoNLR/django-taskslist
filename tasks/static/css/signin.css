@@ -41,7 +41,10 @@ input {
 }
 
 .form-group {
-    margin-top: 20px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .form-group button{
